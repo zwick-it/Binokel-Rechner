@@ -1,0 +1,99 @@
+/* Allgemeine Stile */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+header h1 {
+    font-size: 24px;
+    color: #333;
+}
+
+header p {
+    font-size: 12px;
+    color: #777;
+}
+
+/* Scoreboard und Input-Section als Flex-Container */
+.scoreboard, .input-section {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+/* Spielerbereiche mit Outline-Farben */
+.player {
+    flex: 1;
+    border: 1px solid;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+.player-1 {
+    border-color: #007bff;
+    background-color: #e6f7ff;
+}
+
+.player-2 {
+    border-color: #28a745;
+    background-color: #e6ffe6;
+}
+
+.player-3 {
+    border-color: #ffc107;
+    background-color: #fff7e6;
+}
+
+/* Badges für die Spielerpunkte */
+.badge {
+    font-size: 1.2em;
+    padding: 5px;
+    color: #1E90FF;
+    display: block;
+    text-align: center;
+}
+
+/* Buttons */
+button {
+    padding: 10px;
+    margin: 5px 0;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Ergebnisnachricht */
+.alert {
+    display: none;
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* Modal-Stile */
+.modal-content {
+    padding: 10px;
+}

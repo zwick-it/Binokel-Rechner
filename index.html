@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binokel Rechner</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container mt-4">
+        <header class="text-center mb-4">
+            <h1>Binokel Rechner</h1>
+            <p class="lead">von Martin Zwick</p>
+        </header>
+
+        <!-- Neues Spiel Button -->
+        <button class="btn btn-primary w-100 mb-3" onclick="resetGame()">Neues Spiel</button>
+
+        <!-- Spielernamen und Punktestände -->
+        <div class="scoreboard mb-4">
+            <div class="player player-1 mb-3">
+                <input type="text" id="player1Name" class="form-control mb-2" placeholder="Name 1">
+                <span id="player1Score" class="badge bg-white">0</span>
+            </div>
+            <div class="player player-2 mb-3">
+                <input type="text" id="player2Name" class="form-control mb-2" placeholder="Name 2">
+                <span id="player2Score" class="badge bg-white">0</span>
+            </div>
+            <div class="player player-3 mb-3">
+                <input type="text" id="player3Name" class="form-control mb-2" placeholder="Name 3">
+                <span id="player3Score" class="badge bg-white">0</span>
+            </div>
+        </div>
+
+        <!-- Eingabefelder für Reizwert, Meldung und Stiche -->
+        <div class="input-section mb-4">
+            <div class="player-input player-1 mb-3">
+                <input type="number" id="player1Bid" class="form-control mb-2" placeholder="Reizwert">
+                <input type="number" id="player1Meld" class="form-control mb-2" placeholder="Meldung">
+                <input type="number" id="player1Tricks" class="form-control mb-2" placeholder="Stiche">
+            </div>
+            <div class="player-input player-2 mb-3">
+                <input type="number" id="player2Bid" class="form-control mb-2" placeholder="Reizwert">
+                <input type="number" id="player2Meld" class="form-control mb-2" placeholder="Meldung">
+                <input type="number" id="player2Tricks" class="form-control mb-2" placeholder="Stiche">
+            </div>
+            <div class="player-input player-3 mb-3">
+                <input type="number" id="player3Bid" class="form-control mb-2" placeholder="Reizwert">
+                <input type="number" id="player3Meld" class="form-control mb-2" placeholder="Meldung">
+                <input type="number" id="player3Tricks" class="form-control mb-2" placeholder="Stiche">
+            </div>
+        </div>
+        <!-- Restwert und zu stechende Punkte anzeigen -->
+        <div class="mt-4">
+             <div class="mb-3">
+        	<label for="remainingTricks">(250 - Stiche):</label>
+        	<input type="number" id="remainingTricks" class="form-control" readonly>
+    	     </div>
+             <div class="mb-3">
+                <label for="pointsToReach"> (Reizwert - Meldung):</label>
+                <input type="number" id="pointsToReach" class="form-control" readonly>
+    	     </div>
+        </div>
+
+
+	<!-- Buttons für Berechnen, Historie und Korrektur -->
+        <button class="btn btn-success w-100 mb-3" onclick="calculateScores()">Berechnen</button>
+        <button class="btn btn-info w-100 mb-3" onclick="showHistory()">Historie</button>
+        <button class="btn btn-warning w-100 mb-3" onclick="editScores()">Korrektur</button>
+
+        <!-- Ergebnisnachricht -->
+        <div id="resultMessage" class="alert alert-info mt-3" style="display: none;"></div>
+
+        <!-- Historie Modal -->
+        <div id="historyModal" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Historie</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+				    <th id="historyPlayer1">Spieler 1</th>
+           			    <th id="historyPlayer2">Spieler 2</th>
+                                    <th id="historyPlayer3">Spieler 3</th>
+				    <th id="historyReizwert">Reizwert</th> 
+                                </tr>
+                            </thead>
+                            <tbody id="historyTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Korrekturansicht Modal -->
+        <div id="editScoresModal" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Ergebnisse bearbeiten</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="edit-scores">
+                            <div>
+                                <label id="editPlayer1Label" for="editPlayer1">Spieler 1:</label>
+                                <input type="number" id="editPlayer1">
+                            </div>
+                            <div>
+                                <label id="editPlayer2Label" for="editPlayer2">Spieler 2:</label>
+                                <input type="number" id="editPlayer2">
+                            </div>
+                            <div>
+                                <label id="editPlayer3Label" for="editPlayer3">Spieler 3:</label>
+                                <input type="number" id="editPlayer3">
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" onclick="saveScores()">Speichern</button>
+                        <button class="btn btn-secondary" onclick="closeModal('editScoresModal')">Abbrechen</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JavaScript einbinden -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+
