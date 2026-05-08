@@ -1,16 +1,20 @@
 import React, { useContext } from 'react';
 import { GameContext } from '../context/GameContext';
 
-const PlayerScore = ({ playerId, playerName, color }) => {
-  const { scores } = useContext(GameContext);
+const PlayerScore = ({ playerId, color }) => {
+  const { playerNames, renamePlayer, scores } = useContext(GameContext);
 
   return (
-    <div className={`p-4 rounded-lg shadow-md ${color}`}>
-      <h2 className="font-semibold mb-2">{playerName}</h2>
-      <span className="inline-flex min-w-16 justify-center rounded bg-white px-3 py-2 text-xl font-bold">
+    <section className={`rounded border p-4 shadow-sm ${color}`}>
+      <input
+        className="mb-3 w-full rounded border border-white/70 bg-white/80 px-3 py-2 font-semibold"
+        value={playerNames[playerId]}
+        onChange={(event) => renamePlayer(playerId, event.target.value)}
+      />
+      <span className="inline-flex min-w-20 justify-center rounded bg-white px-4 py-2 text-2xl font-bold">
         {scores[playerId]}
       </span>
-    </div>
+    </section>
   );
 };
 

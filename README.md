@@ -4,7 +4,16 @@ Ein einfacher Rechner fuer Binokel mit 3 Spielern.
 
 ## Status
 
-Alpha. Die React-App kann Rundenpunkte erfassen, Gesamtpunkte addieren und die Rundhistorie anzeigen. Die vollstaendige Binokel-Regellogik aus der aelteren statischen Version ist noch nicht komplett in React migriert.
+Alpha. Die React-App ersetzt einen einfachen Papier-Spielzettel fuer 3 Spieler: Namen, Reizwert, Meldung, Stichpunkte, Rundenergebnis, Gesamtpunkte und Historie werden im Browser gefuehrt.
+
+Die aktuelle Rechenlogik nutzt diese Annahmen:
+
+- 250 Stichpunkte pro Runde
+- hoechster Reizwert bestimmt den spielenden Spieler
+- Meldung plus Stichpunkte muss mindestens den Reizwert erreichen
+- bei verlorenem Spiel zaehlt `-2 * Reizwert`
+- Stichpunkte werden auf Zehner gerundet
+- der Spielstand wird im Browser gespeichert
 
 ## Entwicklung
 
