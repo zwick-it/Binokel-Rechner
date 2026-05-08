@@ -6,14 +6,10 @@ const PlayerScore = ({ playerId, playerName, color }) => {
 
   return (
     <div className={`p-4 rounded-lg shadow-md ${color}`}>
-      <input
-        type="text"
-        className="form-control mb-2"
-        placeholder={playerName}
-        value={playerName}
-        onChange={(e) => console.log(e.target.value)} // Hier später State updaten
-      />
-      <span className="badge bg-white text-lg">{scores[playerId]}</span>
+      <h2 className="font-semibold mb-2">{playerName}</h2>
+      <span className="inline-flex min-w-16 justify-center rounded bg-white px-3 py-2 text-xl font-bold">
+        {scores[playerId]}
+      </span>
     </div>
   );
 };

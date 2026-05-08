@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { GameProvider } from './context/GameContext';
 import PlayerScore from './components/PlayerScore';
 import InputSection from './components/InputSection';
