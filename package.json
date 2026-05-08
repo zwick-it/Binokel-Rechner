@@ -2,6 +2,7 @@
   "name": "binokel-rechner",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://www.martin-zwick.de/binokel",
   "description": "Ein Rechner fuer Binokel mit 3 Spielern.",
   "scripts": {
     "start": "react-scripts start",
